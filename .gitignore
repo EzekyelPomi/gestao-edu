@@ -1,0 +1,6 @@
+.ven/
+__pycache__/
+*py[cod]
+instance/
+.env
+.vscode/

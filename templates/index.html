@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestão Edu</title>
+</head>
+<body>
+    <div>Sistema de Gestão Escolar</div>
+
+    <div>Cadastro de alunos</div>
+
+    <div>
+        <form action="/cadastrar" method="POST">
+            <label for="nome">Nome do aluno:</label>
+            <input type="text" id="nome" name="nome" required>
+
+            <br><br>
+
+            <label for="turma">Turma:</label>
+            <input type="text" id="turma" name="turma" required>
+
+            <br><br>
+
+            <button type="submit">Cadastrar aluno</button>
+        </form>
+    </div>
+    <div>
+        <div>Alunos cadastrados</div>
+        {% if alunos %}
+        <ul>
+            {% for aluno in alunos %}
+            <li>{{ aluno.nome }} - Turma {{ aluno.turma }}</li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <div>nenhum aluno cadastrado</div>
+        {% endif %}
+    </div>
+</body>
+</html>
