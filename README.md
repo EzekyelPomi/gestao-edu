@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Olá, eu sou o Ezekyel Ayllon 👋
 
 🎓 **Estudante de Análise e Desenvolvimento de Sistemas** & **Graduando em Matemática**  
@@ -26,3 +27,7 @@
 
 - **LinkedIn:** [linkedin.com/in/ezekyel-ayllon](https://www.linkedin.com/in/ezekyel-ayllon-pomi-xavier-de-castro-7b5301184)
 - **E-mail:** ezekyelpomi@gmail.com
+=======
+# gestao-edu
+portifolio de gestao educavional
+>>>>>>> 6fc67d600a440be57a41c58fb62358fff51e7ee3
