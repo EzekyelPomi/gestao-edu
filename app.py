@@ -20,28 +20,29 @@ criar_tabela()
 
 @app.route("/")
 def inicio():
+    return render_template("index.html")
+
+@app.route("/consultar")
+def consultar():
     busca = request.args.get("busca","").strip()
     with conectar_banco() as conexao:
-        if busca:
-            dados_alunos = conexao.execute("""SELECT id, nome,turma FROM alunos WHERE nome LIKE ? OR turma LIKE ? ORDER BY id DESC""",(f"%{busca}%", f"%{busca}%")).fetchall()
-        else:
-            dados_alunos = conexao.execute("SELECT id,nome,turma FROM alunos ORDER BY id DESC").fetchall()
-    return render_template("index.html", alunos = dados_alunos, busca = busca)
-@app.route("/cadastrar", methods = ["POST"])
+            if busca:
+                dados_alunos = conexao.execute("""SELECT id, nome,turma FROM alunos WHERE nome LIKE ? OR turma LIKE ? ORDER BY id DESC""",(f"%{busca}%", f"%{busca}%")).fetchall()
+            else:
+                dados_alunos = conexao.execute("SELECT id,nome,turma FROM alunos ORDER BY id DESC").fetchall()
+    return render_template("listagem.html", alunos = dados_alunos, busca = busca)
+
+@app.route("/cadastrar", methods = ["GET","POST"])
 def cadastrar():
-    nome = request.form["nome"].strip()
-    turma = request.form["turma"].strip()
-
-    if not nome or not turma:
-        return "Nome e turma são obrigatorios.", 400
-    with conectar_banco() as conexao:
-        conexao.execute("INSERT INTO alunos (nome, turma) VALUES (?,?)",(nome,turma))
-            
-    return redirect(url_for("inicio"))
-
-@app.route("/consultar", methods = ["POST"])
-def consultar():
-    return redirect(url_for("inicio"))
+    if request.method == "POST":
+        nome = request.form["nome"].strip()
+        turma = request.form["turma"].strip()
+        if not nome or not turma:
+            return "Nome e turma são obrigatorios.", 400
+        with conectar_banco() as conexao:
+            conexao.execute("INSERT INTO alunos (nome, turma) VALUES (?,?)",(nome,turma))
+        return redirect(url_for("consultar"))
+    return render_template("cadastro.html")
 
 if __name__ == "__main__":
     app.run(debug=True)

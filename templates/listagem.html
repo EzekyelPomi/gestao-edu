@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block titulo %}Gestão Edu - Pesquisar{% endblock %}
+
+{% block conteudo %}
+<a href="{{ url_for('cadastrar' ) }}">Cadastrar Aluno</a>
+<div>
+    <form action="{{ url_for('consultar') }}" method="GET">
+        <label for="busca">Pesquisar alunos cadastrados:</label>
+
+        <input type="text" id="busca" name="busca" value="{{busca}}" placeholder="Ex.: Ana ou 7º ano A">
+        <button type="submit">Pesquisar</button>
+        <a href="{{ url_for('consultar' ) }}">Limpar pesquisa</a>
+    </form>
+    <div>
+        {% if alunos %}
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>NOME</th>
+                    <th>TURMA</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for aluno in alunos %}
+                <tr>
+                    <td>{{ aluno.id }}</td>
+                    <td>{{ aluno.nome }}</td>
+                    <td>{{ aluno.turma }}</td>
+                    {% endfor %}
+                </tr>
+            </tbody>
+        </table>
+        {% elif busca %}
+        <p>Nenhum aluno encontrado para "{{ busca }}".</p>
+        {% else %}
+        <p>Nenhum aluno cadastrado.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

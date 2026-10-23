@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    {% block head %}
+    <link rel="stylesheet" href="style.css" />
+    <title>{% block titulo %}Gestão Edu{% endblock %}</title>
+    {% endblock %}
+</head>
+
+<body>
+    <header>
+        <div> Sistema Gestão Edu</div>
+
+        <nav>
+            <a href="{{ url_for('inicio' ) }}">Inicio</a>
+            <a href="{{ url_for('cadastrar' ) }}">Cadastrar aluno</a>
+            <a href="{{ url_for('consultar' ) }}">Pesquisar aluno</a>
+        </nav>
+    </header>
+    <main>
+        <div id="content">
+            {% block conteudo %}
+
+            {% endblock %}
+        </div>
+    </main>
+</body>
+
+</html>

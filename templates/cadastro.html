@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block titulo %}Gestão Edu - Cadastro{% endblock %}
+{% block conteudo %}
+<div>Cadastro de alunos</div>
+
+<div>
+    <form action="{{ url_for('cadastrar') }}" method="POST">
+        <label for="nome">Nome do aluno:</label>
+        <input type="text" id="nome" name="nome" required>
+
+        <br><br>
+
+        <label for="turma">Turma:</label>
+        <input type="text" id="turma" name="turma" required>
+
+        <br><br>
+
+        <button type="submit">Cadastrar aluno</button>
+    </form>
+</div>
+{% endblock %}
