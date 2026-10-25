@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block titulo %}Gestão Edu - Cadastrar Turmas{% endblock %}
+
+{% block conteudo %}
+<div>Cadastro de turmas</div>
+
+<div>
+    <form action="{{ url_for('cadastrarTurma') }}" method="POST">
+        <label for="nomeTurma">Nome da turma:</label>
+        <input type="text" id="nomeT" name="nomeT" required>
+
+        <br><br>
+
+        <label for="nivelEns">Nivel de ensino:</label>
+        <select name="nivel" id="nivel" required>
+            <option value="">...</option>
+            <option value="Educação infantil">Edeucação infantil</option>
+            <option value="Ens. Fund. Inicial">Ens. Fund. Inicial</option>
+            <option value="Ens. Fund. Final">Ens. Fund. Final</option>
+        </select>
+
+        <br><br>
+
+        <label for="turno">Turno:</label>
+        <select name="turno" id="turno" required>
+            <option value="">...</option>
+            <option value="Manhã">Manhã</option>
+            <option value="Tarde">Tarde</option>
+            <option value="Integral">Integral</option>
+        </select>
+        <button type="submit">Cadastrar turma</button>
+    </form>
+</div>   
+{% endblock %}

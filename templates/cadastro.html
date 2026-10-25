@@ -11,7 +11,13 @@
         <br><br>
 
         <label for="turma">Turma:</label>
-        <input type="text" id="turma" name="turma" required>
+<!--    <input type="text" id="turma" name="turma" required>-->
+        <select name="turma" id="turma" required>
+            <option value="">...</option>
+            {% for turma in turmas %}
+                <option value="{{ turma.nomeTurma }}">{{ turma.nomeTurma }}</option>
+            {% endfor %}
+        </select>
 
         <br><br>
 
