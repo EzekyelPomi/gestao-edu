@@ -1,6 +1,56 @@
 {% extends 'base.html' %}
 {% block titulo %}Gestão Edu - Inicio{% endblock %}
 {% block conteudo%}
-    <h1>Seja Bem Vindo ao Sistema Gestão Edu</h1>
-    <h2>Sistema onde você poderá gerir as turmas da sua instituição</h2>
+<div class="mb-4">
+    <h2 class="fw-bold mb-1">Painel inicial</h2>
+    <p class="text-secondary mb-0">
+        Gerencie os registros escolares em um só lugar.
+    </p>
+</div>
+
+<div class="row g-3 mb-4">
+
+    <div class="col-12 col-md-6 col-lg-4">
+        <div class="card h-100 shadow-sm">
+            <div class="card-body p-4">
+                <h5 class="card-title">Cadastrar Turmas</h5>
+                <p class="text-secondary">
+                    Adicione novos registros ao sistema.
+                </p>
+                <a href="{{ url_for('cadastrarTurma') }}" class="btn btn-primary">
+                    Novo cadastro de turma
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12 col-md-6 col-lg-4">
+        <div class="card h-100 shadow-sm">
+            <div class="card-body p-4">
+                <h5 class="card-title">Cadastrar aluno</h5>
+                <p class="text-secondary">
+                    Adicione novos registros ao sistema.
+                </p>
+                <a href="{{ url_for('cadastrar') }}" class="btn btn-primary">
+                    Novo cadastro de aluno
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12 col-md-6 col-lg-4">
+        <div class="card h-100 shadow-sm">
+            <div class="card-body p-4">
+                <h5 class="card-title">Pesquisar alunos</h5>
+                <p class="text-secondary">
+                    Consulte os registros existentes.
+                </p>
+                <a href="{{ url_for('consultar') }}" class="btn btn-outline-primary">
+                    Consultar registros
+                </a>
+            </div>
+        </div>
+    </div>
+
+</div>
 {% endblock %}

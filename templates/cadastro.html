@@ -1,27 +1,45 @@
 {% extends 'base.html' %}
 {% block titulo %}Gestão Edu - Cadastro{% endblock %}
 {% block conteudo %}
-<div>Cadastro de alunos</div>
+<div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-4">
+    <div>
+        <h2 class="fw-bold mb-1">Cadastrar aluno</h2>
+        <p class="text-secondary mb-0">
+            Preencha os dados para registrar um novo aluno.
+        </p>
+        <a href="{{ url_for('consultar') }}" class="btn btn-light btn-outline-secondary">
+            Consultar alunos
+        </a>
+        <a href="{{ url_for('cadastrarTurma') }}" class="btn btn-light btn-outline-secondary">
+            Cadastrar Turma
+        </a>
+    </div>
 
-<div>
-    <form action="{{ url_for('cadastrar') }}" method="POST">
-        <label for="nome">Nome do aluno:</label>
-        <input type="text" id="nome" name="nome" required>
+    <div class="card-body p-4">
+        <form action="{{ url_for('cadastrar') }}" method="POST">
+            <div class="col-12 col-md-8">
+                <label class="form-label" for="nome">Nome do aluno:</label>
+                <input class="form-control" type="text" id="nome" name="nome" required>
+            </div>
 
-        <br><br>
-
-        <label for="turma">Turma:</label>
-<!--    <input type="text" id="turma" name="turma" required>-->
-        <select name="turma" id="turma" required>
-            <option value="">...</option>
-            {% for turma in turmas %}
-                <option value="{{ turma.nomeTurma }}">{{ turma.nomeTurma }}</option>
-            {% endfor %}
-        </select>
-
-        <br><br>
-
-        <button type="submit">Cadastrar aluno</button>
-    </form>
+            <br><br>
+            <div class="col-12 col-md-6">
+                <label class="form-label" for="turma">Turma:</label>
+                <select class="form-select" name="turma" id="turma" required>
+                    <option value="" selected disabled>...</option>
+                    {% for turma in turmas %}
+                    <option value="{{ turma.nomeTurma }}">{{ turma.nomeTurma }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <br><br>
+            <div class="d-flex justify-content-end gap-2 flex-wrap">
+                <a href="{{ url_for('inicio') }}" class="btn btn-light border">
+                    Cancelar
+                </a>
+                <button class="btn btn-primary" type="submit">Cadastrar aluno</button>
+            </div>
+        </form>
+    </div>
 </div>
 {% endblock %}

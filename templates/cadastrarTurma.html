@@ -2,33 +2,53 @@
 {% block titulo %}Gestão Edu - Cadastrar Turmas{% endblock %}
 
 {% block conteudo %}
-<div>Cadastro de turmas</div>
+<div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-4">
+    <div>
+        <h2 class="fw-bold mb-1">Cadastrar turma</h2>
+        <p class="text-secondary mb-0">Preencha os dados para registrar uma nova turma.</p>
+    </div>
+    <a href="{{ url_for('cadastrar') }}" class="btn btn-primary">+ Novo aluno</a>
+</div>
+<div class="card shadow-sm">
+    <div class="card-header py-3">Dados da turma</div>
+    <div class="card-body p-4">
+        <form action="{{ url_for('cadastrarTurma') }}" method="POST">
+            <div class="row g-3">
+                <div class="col-12 col-md-8">
+                    <label class="form-label" for="nomeTurma">Nome da turma:</label>
+                    <input class="form-control" type="text" id="nomeT" name="nomeT" required>
+                </div>
 
-<div>
-    <form action="{{ url_for('cadastrarTurma') }}" method="POST">
-        <label for="nomeTurma">Nome da turma:</label>
-        <input type="text" id="nomeT" name="nomeT" required>
+                <br><br>
 
-        <br><br>
+                <div class="col-12 col-md-4">
+                    <label class="form-label" for="nivelEns">Nivel de ensino:</label>
+                    <select class="form-select" name="nivel" id="nivel" required>
+                        <option value="">...</option>
+                        <option value="Educação infantil">Edeucação infantil</option>
+                        <option value="Ens. Fund. Inicial">Ens. Fund. Inicial</option>
+                        <option value="Ens. Fund. Final">Ens. Fund. Final</option>
+                    </select>
+                </div>
 
-        <label for="nivelEns">Nivel de ensino:</label>
-        <select name="nivel" id="nivel" required>
-            <option value="">...</option>
-            <option value="Educação infantil">Edeucação infantil</option>
-            <option value="Ens. Fund. Inicial">Ens. Fund. Inicial</option>
-            <option value="Ens. Fund. Final">Ens. Fund. Final</option>
-        </select>
+                <br>
+                <br>
 
-        <br><br>
-
-        <label for="turno">Turno:</label>
-        <select name="turno" id="turno" required>
-            <option value="">...</option>
-            <option value="Manhã">Manhã</option>
-            <option value="Tarde">Tarde</option>
-            <option value="Integral">Integral</option>
-        </select>
-        <button type="submit">Cadastrar turma</button>
-    </form>
-</div>   
+                <div class="col-12 col-md-4">
+                    <label class="form-label" for="turno">Turno:</label>
+                    <select class="form-select" name="turno" id="turno" required>
+                        <option value="">...</option>
+                        <option value="Manhã">Manhã</option>
+                        <option value="Tarde">Tarde</option>
+                        <option value="Integral">Integral</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <a href="{{ url_for('inicio') }}" class="btn btn-light border">Cancelar</a>
+                <button class="btn btn-primary" type="submit">Cadastrar turma</button>
+            </div>
+        </form>
+    </div>
+</div>
 {% endblock %}

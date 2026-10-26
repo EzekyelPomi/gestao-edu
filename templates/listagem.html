@@ -2,40 +2,73 @@
 {% block titulo %}Gestão Edu - Pesquisar{% endblock %}
 
 {% block conteudo %}
-<a href="{{ url_for('cadastrar' ) }}">Cadastrar Aluno</a>
-<div>
-    <form action="{{ url_for('consultar') }}" method="GET">
-        <label for="busca">Pesquisar alunos cadastrados:</label>
-
-        <input type="text" id="busca" name="busca" value="{{busca}}" placeholder="Ex.: Ana ou 7º ano A">
-        <button type="submit">Pesquisar</button>
-        <a href="{{ url_for('consultar' ) }}">Limpar pesquisa</a>
-    </form>
+<div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-4">
     <div>
-        {% if alunos %}
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>NOME</th>
-                    <th>TURMA</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for aluno in alunos %}
-                <tr>
-                    <td>{{ aluno.id }}</td>
-                    <td>{{ aluno.nome }}</td>
-                    <td>{{ aluno.turma }}</td>
+        <h2 class="fw-bold mb-1">Consultar alunos</h2>
+        <p class="text-secondary mb-0">
+            Pesquise e gerencie os alunos cadastrados.
+        </p>
+    </div>
+
+    <a href="{{ url_for('cadastrar') }}" class="btn btn-primary">
+        + Novo aluno
+    </a>
+</div>
+
+<div class="card shadow-sm mb-4">
+    <div class="card-body p-4">
+        <form action="{{ url_for('consultar') }}" method="GET">
+            <div class="row g-3 align-items-end">
+                <div class="col-12 col-md-8">
+                    <label for="busca">Pesquisar alunos cadastrados:</label>
+                    <input type="text" id="busca" name="busca" value="{{busca}}" placeholder="Ex.: Ana ou 7º ano A">
+                </div>
+                <div class="col-12 col-md-4 d-flex gap-2">
+                    <button class="btn btn-primary flex-grow-1" type="submit">Pesquisar</button>
+                    <a class="btn btn-outline-secondary" href="{{ url_for('consultar' ) }}">Limpar pesquisa</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="card shadow-sm">
+    <div class="card-header py-3 d-flex justify-content-between align-items-center">
+        <span>Alunos cadastrados</span>
+        <span class="badge text-bg-primary">
+            {{ alunos|length }} registros
+        </span>
+    </div>
+    <div class="card-body p-0">
+        <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0">
+                <thead class="table-light">
+                    <tr>
+                        <th class="ps-3">ID</th>
+                        <th>NOME</th>
+                        <th>TURMA</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if alunos %}
+                    {% for aluno in alunos %}
+                    <tr>
+                        <td class="ps-3">{{ aluno.id }}</td>
+                        <td class="fw-semibold">{{ aluno.nome }}</td>
+                        <td>{{ aluno.turma }}</td>
+                    </tr>
                     {% endfor %}
-                </tr>
-            </tbody>
-        </table>
-        {% elif busca %}
-        <p>Nenhum aluno encontrado para "{{ busca }}".</p>
-        {% else %}
-        <p>Nenhum aluno cadastrado.</p>
-        {% endif %}
+                    {% elif busca %}
+                    <tr>
+                        <td class="text-center text-secondary py-5">Nenhum aluno encontrado para " {{ busca }}".</td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td class="text-center text-secondary py-5">Nenhum aluno cadastrado.</td>
+                    </tr>
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 {% endblock %}
