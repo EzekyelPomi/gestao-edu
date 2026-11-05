@@ -1,4 +1,4 @@
-.ven/
+.venv/
 __pycache__/
 *py[cod]
 instance/
