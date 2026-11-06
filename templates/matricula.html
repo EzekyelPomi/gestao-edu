@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block titulo %}Gestão Edu - Editar aluno{% endblock %}
+
+{% block conteudo %}
+<div class="card-body p-4">
+    <form action="{{ url_for('matricular_aluno') }}" method="POST">
+        <input type="hidden" name="id_aluno" value="{{ id_aluno }}">
+        <div class="col-12 col-md-6">
+            <label class="form-label" for="turma">Qual turma irá matricular:</label>
+            <select class="form-select" name="turma" id="turma" required>
+                <option value="" selected disabled>...</option>
+                {% for turma in turmas %}
+                <option value="{{ turma.id }}">{{ turma.nome_turma }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="d-flex justify-content-end gap-2 flex-wrap">
+            <a href="{{ url_for('inicio') }}" class="btn btn-light border">
+                Cancelar
+            </a>
+            <button class="btn btn-primary" type="submit">Matricular aluno</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

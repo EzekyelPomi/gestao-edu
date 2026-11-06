@@ -44,7 +44,11 @@
                     </select>
                 </div>
             </div>
-            <div>
+            <div class="col-12 col-md-8">
+                <label class="form-label" for="ano_letivo">Ano letivo de referencia</label>
+                <input class="form-control" type="text" maxlength="4" id="ano_letivo" name="ano_letivo" required>
+            </div>
+            <div class="d-flex justify-content-end gap-2 flex-wrap">
                 <a href="{{ url_for('inicio') }}" class="btn btn-light border">Cancelar</a>
                 <button class="btn btn-primary" type="submit">Cadastrar turma</button>
             </div>

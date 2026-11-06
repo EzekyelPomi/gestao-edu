@@ -45,25 +45,33 @@
                     <tr>
                         <th class="ps-3">ID</th>
                         <th>NOME</th>
+                        <th>DATA NASCIMENTO</th>
                         <th>TURMA</th>
+                        <th>DATA MATRICULA</th>
+                        <th>EDITAR</th>
+                        <th>EXCLUIR</th>
                     </tr>
                 </thead>
                 <tbody>
                     {% if alunos %}
                     {% for aluno in alunos %}
                     <tr>
-                        <td class="ps-3">{{ aluno.id }}</td>
-                        <td class="fw-semibold">{{ aluno.nome }}</td>
-                        <td>{{ aluno.turma }}</td>
+                        <td class="ps-3">{{ aluno['id'] }}</td>
+                        <td class="fw-semibold">{{ aluno['nome_completo'] }}</td>
+                        <td class="fw-semibold">{{ aluno['data_nascimento'] }}</td>
+                        <td class="fw-semibold">{{ aluno['nome_turma'] or 'Sem matricula' }}</td>
+                        <td class="fw-semibold">{{ aluno['data_matricula'] or 'Sem matricula' }}</td>
+                        <td><a href="{{ url_for('editar_aluno', id_aluno = aluno['id'] ) }}">Editar</a></td>
+                        <td><a href="{{ url_for('excluir_aluno', id_aluno = aluno['id'] ) }}">Excluir</a></td>
                     </tr>
                     {% endfor %}
                     {% elif busca %}
                     <tr>
-                        <td class="text-center text-secondary py-5">Nenhum aluno encontrado para " {{ busca }}".</td>
+                        <td colspan="5" class="text-center text-secondary py-5">Nenhum aluno encontrado para " {{ busca }}".</td>
                     </tr>
                     {% else %}
                     <tr>
-                        <td class="text-center text-secondary py-5">Nenhum aluno cadastrado.</td>
+                        <td colspan="5" class="text-center text-secondary py-5">Nenhum aluno cadastrado.</td>
                     </tr>
                     {% endif %}
                 </tbody>

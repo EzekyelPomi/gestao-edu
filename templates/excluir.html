@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block titulo %}Gestão Edu - Excluir Aluno{% endblock %}
+
+{% block conteudo %}
+<div class="container py-4">
+    <div class="mb-4">
+        <h2 class="fw-bold mb-1">Excluir aluno</h2>
+        <p class="text-secondary mb-0">
+            Deseja realmente excluir este aluno?
+        </p>
+    </div>
+
+    <div class="card shadow-sm p-4">
+        <div class="mb-3">
+            <label class="form-label">Nome completo</label>
+            <div class="form-control">
+                {{ aluno['nome_completo'] }}
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Responsável</label>
+            <div class="form-control">
+                {{ aluno['nome_responsavel'] }}
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Data de nascimento</label>
+            <div class="form-control">
+                {{ aluno['data_nascimento'] }}
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">CPF</label>
+            <div class="form-control">
+                {{ aluno['cpf_aluno'] }}
+            </div>
+        </div>
+
+        <form action="{{ url_for('excluir_aluno', id_aluno=aluno['id']) }}"
+              method="POST">
+
+            <div class="d-flex justify-content-end gap-2 flex-wrap">
+                <a href="{{ url_for('consultar') }}"
+                   class="btn btn-light border">
+                    Cancelar
+                </a>
+
+                <button class="btn btn-danger" type="submit">
+                    Excluir aluno
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
