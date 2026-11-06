@@ -47,9 +47,53 @@ A aplicação será organizada em componentes com responsabilidades distintas:
 
 Este projeto faz parte do meu portfólio de desenvolvimento em tecnologia, com o objetivo de integrar conhecimentos de Análise e Desenvolvimento de Sistemas e Matemática, explorando a relação entre desenvolvimento de software, organização de dados e interpretação de indicadores educacionais.
 
+
 ## Como executar
 
-As instruções de instalação e execução serão adicionadas conforme a estrutura da aplicação for implementada.
+### 1. Clone o repositório
+
+```bash
+git clone https://github.com/EzekyelPomi/gestao-edu.git
+```
+
+### 2. Acesse a pasta do projeto
+
+```bash
+cd gestao-edu
+```
+
+### 3. Crie um ambiente virtual
+
+```bash
+python -m venv .venv
+```
+
+### 4. Ative o ambiente virtual
+
+No Windows:
+
+```bash
+.venv\Scripts\activate
+```
+
+### 5. Instale as dependências
+
+```bash
+pip install -r requirements.txt
+```
+
+### 6. Execute a aplicação
+
+```bash
+python app.py
+```
+
+### 7. Acesse no navegador
+
+Após iniciar a aplicação, acesse:
+
+http://127.0.0.1:5000
+
 
 ## Observação sobre os dados
 
